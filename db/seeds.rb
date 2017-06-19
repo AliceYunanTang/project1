@@ -23,5 +23,24 @@ p5 = Project.create name: "Darlinghurst Community Space Project", description: "
 
 puts "Project total count: #{Project.all.count}"
 
+TimeEntry.destroy_all
+te1 = TimeEntry.create start_time: (Time.now - 7.days), end_time: (Time.now - 7.days + 2.hours)
+te2 = TimeEntry.create start_time: (Time.now - 6.days), end_time: (Time.now - 6.days + 1.hour)
+te3 = TimeEntry.create start_time: (Time.now - 5.days), end_time: (Time.now - 5.days + 1.hour)
+te4 = TimeEntry.create start_time: (Time.now - 4.days), end_time: (Time.now - 4.days + 2.hours)
+te5 = TimeEntry.create start_time: (Time.now - 3.days), end_time: (Time.now - 3.days + 1.hour)
+te6 = TimeEntry.create start_time: (Time.now - 2.days), end_time: (Time.now - 2.days + 1.hour)
+
+te7 = TimeEntry.create start_time: (Time.now - 8.days), end_time: (Time.now - 8.days + 2.hours)
+te8 = TimeEntry.create start_time: (Time.now - 9.days), end_time: (Time.now - 9.days + 1.hour)
+te9 = TimeEntry.create start_time: (Time.now - 10.days), end_time: (Time.now - 10.days + 1.hour)
+te10 = TimeEntry.create start_time: (Time.now - 11.days), end_time: (Time.now - 11.days + 2.hours)
+te11 = TimeEntry.create start_time: (Time.now - 12.days), end_time: (Time.now - 12.days + 1.hour)
+te12 = TimeEntry.create start_time: (Time.now - 13.days), end_time: (Time.now - 13.days + 1.hour)
+
+
 p1.users << u1 << u2
 p2.users << u3 << u4
+
+u4.time_entries  << te1 << te2 << te3 << te4 << te5 << te6 
+p2.time_entries  << te1 << te2 << te3 << te4 << te5 << te6
