@@ -1,0 +1,28 @@
+<h2>Project Details</h2>
+<% if @current_user == @user %>
+  <%= link_to 'Edit project', edit_project_path(@project) %>
+<% end %>
+
+<p>
+  <%= @project.name %>
+</p>
+
+<p>
+  <%= @project.description %>
+
+</p>
+
+<p>
+  <%= @project.location %>
+
+</p>
+
+<p>
+  <%= @project.image %>
+</p>
+
+<p>
+  <% @users.each do |user| %>
+    <%= link_to "#{ user.name }" %>
+  <% end %>
+</p>

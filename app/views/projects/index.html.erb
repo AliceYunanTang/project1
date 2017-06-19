@@ -1,0 +1,15 @@
+<h2>Projects Index</h2>
+<ul>
+<% @projects.each do |project| %>
+
+  <li>
+
+    <%= link_to project.name, project_path(project.id) %>
+
+    <!-- <a href="/projects/<%= project.id %>"><%= project.name %></a>
+    <a data-method="delete" href="/projects/<%= project.id %>">Delete</a> -->
+
+  </li>
+
+<% end %>
+</ul>
