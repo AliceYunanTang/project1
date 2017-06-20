@@ -1,2 +1,28 @@
-<h1>TimeEntries#show</h1>
-<p>Find me in app/views/time_entries/show.html.erb</p>
+<h2>Time Entry Details</h2>
+
+<!-- <% if @current_user == @user %>
+  <%#= link_to 'Edit Time Entry', edit_time_entry_path(@time_entry) %>
+<% end %> -->
+
+<!-- <h3> Submit time form</h3>
+<% tes = @current_user.time_entries %>
+<%= form_for :time_entry do |f| %>
+  <%= f.label :project %>
+  <%= f.collection_select(:project_id, Project.all, :id, :name) %>
+  <%= f.label :start_time %>
+  <%= f.time_field :start_time %>
+  <%= f.label :end_time %>
+  <%= f.time_field :end_time %>
+<% end %>
+
+<h3>Time Entries</h3>
+<% @current_user.time_entries.each do |entry| %>
+<div class="entry">
+  <%= entry.start_time %>
+  <%= entry.end_time %>
+  <%= entry.time %>
+  <%= entry.amount %>
+  <%= link_to 'Edit Time Entry', edit_time_entry_path(entry.id) %>
+<% end %> -->
+
+<%= render partial: 'form' %>

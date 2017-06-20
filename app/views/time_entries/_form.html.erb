@@ -1,0 +1,30 @@
+<h3> Submit time form</h3>
+
+<%= form_for @time_entry do |f| %>
+  <%= f.label :project %>
+  <%= f.collection_select(:project_id, Project.all, :id, :name) %>
+  <br>
+  <%= f.label :start_time %>
+  <%= f.date_select :start_time, :value => Time.now.strftime('%d/%m/%Y') %>
+  <%= f.time_select :start_time, :ignore_date => true%>
+  <br>
+  <%= f.label :end_time %>
+  <%= f.date_select :end_time, :value => Time.now.strftime('%d/%m/%Y') %>
+  <%= f.time_select :end_time, :ignore_date => true %>
+  <br>
+  <%= f.submit %>
+<% end %>
+
+<h3>Time Entries</h3>
+<% @current_user.time_entries.each do |entry| %>
+  <div class="entry">
+    <%= entry.user.name %>
+    <%= entry.project.name %>
+    <%= entry.start_time %>
+    <%= entry.end_time %>
+    <%= entry.time %>
+    <%= entry.amount %>
+    <%= link_to 'Edit', edit_time_entry_path(entry.id) %>
+    <%= link_to 'Delete', time_entry_path(entry.id), method: :delete, data: {confirm: 'Are you sure?'} %>
+  </div>
+<% end %>

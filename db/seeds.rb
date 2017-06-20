@@ -7,10 +7,10 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 User.destroy_all
-u1 = User.create name: "Bill Murray", email: "bill@gmail.co", password: "chicken", password_confirmation: "chicken", image: 'http://fillmurray.com/300/300'
-u2 = User.create name: "Tom Cru", email: "tom@gmail.co", password: "chicken", password_confirmation: "chicken", image: 'http://fillmurray.com/300/300'
-u3 = User.create name: "This Guy", email: "textchimp@gmail.co", password: "chicken", password_confirmation: "chicken", image: 'http://fillmurray.com/300/300'
-u4 = User.create name: "Alice Tang", email: "alice@gmail.co", password: "chicken", password_confirmation: "chicken", image: 'http://fillmurray.com/300/300'
+u1 = User.create name: "Bill Murray", email: "bill@gmail.au", password: "chicken", password_confirmation: "chicken", image: 'http://fillmurray.com/300/300'
+u2 = User.create name: "Tom Cru", email: "tom@gmail.au", password: "chicken", password_confirmation: "chicken", image: 'http://fillmurray.com/300/300'
+u3 = User.create name: "This Guy", email: "textchimp@gmail.au", password: "chicken", password_confirmation: "chicken", image: 'http://fillmurray.com/300/300'
+u4 = User.create name: "Alice Tang", email: "alice@gmail.au", password: "chicken", password_confirmation: "chicken", image: 'http://fillmurray.com/300/300', is_admin: true
 
 puts "User total count #{User.all.count}"
 
@@ -23,24 +23,28 @@ p5 = Project.create name: "Darlinghurst Community Space Project", description: "
 
 puts "Project total count: #{Project.all.count}"
 
-# TimeEntry.destroy_all
-# te1 = TimeEntry.create start_time: (Time.now - 7.days), end_time: (Time.now - 7.days + 2.hours)
-# te2 = TimeEntry.create start_time: (Time.now - 6.days), end_time: (Time.now - 6.days + 1.hour)
-# te3 = TimeEntry.create start_time: (Time.now - 5.days), end_time: (Time.now - 5.days + 1.hour)
-# te4 = TimeEntry.create start_time: (Time.now - 4.days), end_time: (Time.now - 4.days + 2.hours)
-# te5 = TimeEntry.create start_time: (Time.now - 3.days), end_time: (Time.now - 3.days + 1.hour)
-# te6 = TimeEntry.create start_time: (Time.now - 2.days), end_time: (Time.now - 2.days + 1.hour)
-#
-# te7 = TimeEntry.create start_time: (Time.now - 8.days), end_time: (Time.now - 8.days + 2.hours)
-# te8 = TimeEntry.create start_time: (Time.now - 9.days), end_time: (Time.now - 9.days + 1.hour)
-# te9 = TimeEntry.create start_time: (Time.now - 10.days), end_time: (Time.now - 10.days + 1.hour)
-# te10 = TimeEntry.create start_time: (Time.now - 11.days), end_time: (Time.now - 11.days + 2.hours)
-# te11 = TimeEntry.create start_time: (Time.now - 12.days), end_time: (Time.now - 12.days + 1.hour)
-# te12 = TimeEntry.create start_time: (Time.now - 13.days), end_time: (Time.now - 13.days + 1.hour)
+TimeEntry.destroy_all
+te1 = TimeEntry.create start_time: (Time.now - 7.days), end_time: (Time.now - 7.days + 2.hours)
+te2 = TimeEntry.create start_time: (Time.now - 6.days), end_time: (Time.now - 6.days + 1.hour)
+te3 = TimeEntry.create start_time: (Time.now - 5.days), end_time: (Time.now - 5.days + 1.hour)
+te4 = TimeEntry.create start_time: (Time.now - 4.days), end_time: (Time.now - 4.days + 2.hours)
+te5 = TimeEntry.create start_time: (Time.now - 3.days), end_time: (Time.now - 3.days + 1.hour)
+te6 = TimeEntry.create start_time: (Time.now - 2.days), end_time: (Time.now - 2.days + 1.hour)
 
+te7 = TimeEntry.create start_time: (Time.now - 8.days), end_time: (Time.now - 8.days + 2.hours)
+te8 = TimeEntry.create start_time: (Time.now - 9.days), end_time: (Time.now - 9.days + 1.hour)
+te9 = TimeEntry.create start_time: (Time.now - 10.days), end_time: (Time.now - 10.days + 1.hour)
+te10 = TimeEntry.create start_time: (Time.now - 11.days), end_time: (Time.now - 11.days + 2.hours)
+te11 = TimeEntry.create start_time: (Time.now - 12.days), end_time: (Time.now - 12.days + 1.hour)
+te12 = TimeEntry.create start_time: (Time.now - 13.days), end_time: (Time.now - 13.days + 1.hour)
+
+puts "Time total count: #{TimeEntry.all.count}"
 
 p1.users << u1 << u2
 p2.users << u3 << u4
 
-# u4.time_entries  << te1 << te2 << te3 << te4 << te5 << te6 
-# p2.time_entries  << te1 << te2 << te3 << te4 << te5 << te6
+u4.time_entries  << te1 << te2 << te3 << te4 << te5 << te6
+p2.time_entries  << te1 << te2 << te3 << te4 << te5 << te6
+
+u1.time_entries  << te7 << te8 << te9 << te10 << te11 << te12
+p2.time_entries  << te7 << te8 << te9 << te10 << te11 << te12

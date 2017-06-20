@@ -14,7 +14,18 @@ class UsersController < ApplicationController
   end
 
   def create
-    @user = User.create user_params
+
+    # @user = User.create user_params
+
+    @user = User.new(user_params)
+
+    if params[:file].present?
+      req = Cloudinary::Uploader.upload params[:file]
+      @user.image = req['public_id']
+    end
+
+    @user.save
+
     if @user.id.present?
       session[:user_id] = @user.id # perform login (set session)
       redirect_to user_path(@user.id)
@@ -33,6 +44,11 @@ class UsersController < ApplicationController
     # redirect_to root_path unless @current_user == @user
 
     @user = @current_user # makes sure user can only edit their own profile
+
+    if params[:file].present?
+      req = Cloudinary::Uploader.upload params[:file]
+      @user.image = req['public_id']
+    end
 
     @user.update user_params
     redirect_to user_path( params["id"] )
