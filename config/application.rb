@@ -24,7 +24,8 @@ module Project1
     # -- all .rb files in that directory are automatically loaded.
 
     config.time_zone = 'Australia/Sydney'
-    config.active_record.default_timezone = :local
+    # config.active_record.default_timezone = :local
+    config.active_record.default_timezone = 'Australia/Sydney'
 
   end
 end
