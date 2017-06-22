@@ -7,12 +7,12 @@
   <%= f.label :start_time %>
   <%= f.date_select :start_time, :value => Time.current.strftime('%d/%m/%Y') %>
   <!-- <%#= f.time_select :start_time, :ignore_date => true%> -->
-  <%= f.time_select :start_time => true%>
+  <%= f.time_select :start_time %>
   <br>
   <%= f.label :end_time %>
   <%= f.date_select :end_time, :value => Time.current.strftime('%d/%m/%Y') %>
   <!-- <%#= f.time_select :end_time, :ignore_date => true %> -->
-  <%= f.time_select :end_time => true %>
+  <%= f.time_select :end_time %>
   <br>
   <%= f.submit %>
 <% end %>
