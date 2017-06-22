@@ -43,7 +43,7 @@ class TimeEntriesController < ApplicationController
 
     e = Time.zone.parse "#{params[:time_entry]["end_time(1i)"]}-#{params[:time_entry]["end_time(2i)"]}-#{params[:time_entry]["end_time(3i)"]} #{params[:time_entry]["end_time(4i)"]}:#{params[:time_entry]["end_time(5i)"]}"
 
-    # 
+    #
     # s = Time.new(
     #   params[:time_entry]["start_time(1i)"],
     #   params[:time_entry]["start_time(2i)"],
@@ -59,6 +59,8 @@ class TimeEntriesController < ApplicationController
     #   params[:time_entry]["end_time(4i)"],
     #   params[:time_entry]["end_time(5i)"]
     # )
+
+    raise 'hell'
 
     te.start_time = s
     te.end_time = e
