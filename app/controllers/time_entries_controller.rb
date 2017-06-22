@@ -38,7 +38,7 @@ class TimeEntriesController < ApplicationController
 
     te = @current_user.time_entries.new(time_entry_params)
 
-    te.start_time = Time.new(
+    s = Time.new(
       params[:time_entry]["start_time(1i)"],
       params[:time_entry]["start_time(2i)"],
       params[:time_entry]["start_time(3i)"],
@@ -46,13 +46,18 @@ class TimeEntriesController < ApplicationController
       params[:time_entry]["start_time(5i)"]
     )
 
-    te.end_time = Time.new(
+    e = Time.new(
       params[:time_entry]["end_time(1i)"],
       params[:time_entry]["end_time(2i)"],
       params[:time_entry]["end_time(3i)"],
       params[:time_entry]["end_time(4i)"],
       params[:time_entry]["end_time(5i)"]
     )
+
+    te.start_time = s
+    te.end_time = e
+
+    raise 'hell'
 
     if te.save
       redirect_to new_time_entry_path
