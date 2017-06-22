@@ -57,7 +57,13 @@ class TimeEntriesController < ApplicationController
     te.start_time = s
     te.end_time = e
 
-    raise 'hell'
+    puts "="*50
+    puts "start_time: ", s
+    puts "end_time: ", e
+
+    puts "te object:"
+    puts te.start_time.to_s
+    puts te.end_time.to_s
 
     if te.save
       redirect_to new_time_entry_path
