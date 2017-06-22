@@ -60,7 +60,7 @@ class TimeEntriesController < ApplicationController
     #   params[:time_entry]["end_time(5i)"]
     # )
 
-    raise 'hell'
+    # raise 'hell'
 
     te.start_time = s
     te.end_time = e
