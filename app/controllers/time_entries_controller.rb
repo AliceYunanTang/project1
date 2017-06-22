@@ -68,8 +68,8 @@ class TimeEntriesController < ApplicationController
     if te.save
 
       puts "AFTER SAVE==================================="
-      puts Te.last.start_time.to_s
-      puts Te.last.end_time.to_s
+      puts TimeEntry.last.start_time.to_s
+      puts TimeEntry.last.end_time.to_s
 
 
       redirect_to new_time_entry_path
