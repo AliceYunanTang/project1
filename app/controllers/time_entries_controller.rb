@@ -38,21 +38,27 @@ class TimeEntriesController < ApplicationController
 
     te = @current_user.time_entries.new(time_entry_params)
 
-    s = Time.new(
-      params[:time_entry]["start_time(1i)"],
-      params[:time_entry]["start_time(2i)"],
-      params[:time_entry]["start_time(3i)"],
-      params[:time_entry]["start_time(4i)"],
-      params[:time_entry]["start_time(5i)"]
-    )
+    Time.zone = "Australia/Sydney"
+    s = Time.zone.parse "#{params[:time_entry]["start_time(1i)"]}-#{params[:time_entry]["start_time(2i)"]}-#{params[:time_entry]["start_time(3i)"]} #{params[:time_entry]["start_time(4i)"]}:#{params[:time_entry]["start_time(5i)"]}"
 
-    e = Time.new(
-      params[:time_entry]["end_time(1i)"],
-      params[:time_entry]["end_time(2i)"],
-      params[:time_entry]["end_time(3i)"],
-      params[:time_entry]["end_time(4i)"],
-      params[:time_entry]["end_time(5i)"]
-    )
+    e = Time.zone.parse "#{params[:time_entry]["end_time(1i)"]}-#{params[:time_entry]["end_time(2i)"]}-#{params[:time_entry]["end_time(3i)"]} #{params[:time_entry]["end_time(4i)"]}:#{params[:time_entry]["end_time(5i)"]}"
+
+    # 
+    # s = Time.new(
+    #   params[:time_entry]["start_time(1i)"],
+    #   params[:time_entry]["start_time(2i)"],
+    #   params[:time_entry]["start_time(3i)"],
+    #   params[:time_entry]["start_time(4i)"],
+    #   params[:time_entry]["start_time(5i)"]
+    # )
+    #
+    # e = Time.new(
+    #   params[:time_entry]["end_time(1i)"],
+    #   params[:time_entry]["end_time(2i)"],
+    #   params[:time_entry]["end_time(3i)"],
+    #   params[:time_entry]["end_time(4i)"],
+    #   params[:time_entry]["end_time(5i)"]
+    # )
 
     te.start_time = s
     te.end_time = e
