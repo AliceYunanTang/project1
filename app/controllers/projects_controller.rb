@@ -5,6 +5,7 @@ class ProjectsController < ApplicationController
   def get_project
     @project = Project.find params["id"]
     @users = @project.users
+    @all_users = User.all
   end
 
   def new
@@ -16,7 +17,13 @@ class ProjectsController < ApplicationController
     # raise 'hell'
     @project = Project.create project_params
 
+    users = User.where(id: params[:user][:id] )
+    @project.users << users
+
+    # @project.users << params[:new_user_id] unless params[:new_user_id].nil?
+    # @users << params[:new_user_id] unless params[:new_user_id].nil?
     # redirect_to "/projects/#{ @project.id }"
+
     redirect_to project_path(@project)
   end
 
@@ -26,7 +33,16 @@ class ProjectsController < ApplicationController
   end
 
   def update
+
+
+    users = User.where(id: params[:user][:id] )
+    # raise 'hell'
+
+    @project.users << users
+
     @project.update project_params
+
+    # @users.update params[:new_user_id] unless params[:new_user_id].nil?
     redirect_to project_path(params["id"])
   end
 

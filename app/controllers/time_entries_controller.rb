@@ -1,7 +1,9 @@
 class TimeEntriesController < ApplicationController
   before_action :get_time_entry,  only: [:show, :edit, :update]
 
-  before_action :check_if_logged_in, only: [:edit, :update]
+  before_action :check_if_logged_in, only: [:edit, :update, :new, :destroy]
+
+  before_action :check_if_admin, only: [:index]
 
 
   def get_time_entry
@@ -9,8 +11,6 @@ class TimeEntriesController < ApplicationController
 
     # @projects = Project.where
   end
-
-
 
   def index
     # @time_entries = TimeEntry.all
@@ -87,7 +87,6 @@ class TimeEntriesController < ApplicationController
       params[:time_entry]["end_time(4i)"],
       params[:time_entry]["end_time(5i)"]
     )
-
 
     if te.update(time_entry_params)
       redirect_to new_time_entry_path

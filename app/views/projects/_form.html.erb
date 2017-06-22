@@ -16,14 +16,28 @@
   </p>
 
   <p>
+    <%= f.label :image %>
+    <%= f.cl_image_upload :image %>
+  </p>
+
+  <p>
+    <%= f.label :location %>
+    <%= f.text_field :location, required: false %>
+  </p>
+
+  <p>
     <% @users.each do |user| %>
       <%= link_to "#{ user.name }" %>
     <% end %>
   </p>
 
   <p>
-    <%= f.label :user_id %>
-    <%= f.collection_select( :user_id, @users, :id, :name, include_blank: true ) %>
+    <%  %>
+    <%= label_tag :new_user_id %>
+    <%#= collection_select( :user, :id, @all_users, :id, :name, include_blank: true ) %>
+
+    <%= collection_check_boxes( :user, :id, @all_users, :id, :name, {:prompt => true}, {multiple: true}) %>
+
   </p>
 
   <p>

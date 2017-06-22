@@ -1,3 +1,18 @@
+# == Schema Information
+#
+# Table name: time_entries
+#
+#  id         :integer          not null, primary key
+#  user_id    :integer
+#  project_id :integer
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#  time       :decimal(, )
+#  amount     :decimal(, )
+#  end_time   :datetime
+#  start_time :datetime
+#
+
 class TimeEntry < ApplicationRecord
 
 
