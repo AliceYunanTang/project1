@@ -13,6 +13,7 @@ class TimeEntriesController < ApplicationController
   end
 
   def index
+      Time.zone = "Australia/Sydney"
     # @time_entries = TimeEntry.all
 
     # get all time entries, grouped by project:
@@ -27,9 +28,11 @@ class TimeEntriesController < ApplicationController
   end
 
   def show
+      Time.zone = "Australia/Sydney"
   end
 
   def new
+    Time.zone = "Australia/Sydney"
     @time_entry = TimeEntry.new
     @user = @current_user
   end
@@ -91,9 +94,11 @@ class TimeEntriesController < ApplicationController
   end
 
   def edit
+      Time.zone = "Australia/Sydney"
   end
 
   def update
+      Time.zone = "Australia/Sydney"
 
     te = TimeEntry.find params[:id]
 
