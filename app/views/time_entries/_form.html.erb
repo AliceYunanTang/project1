@@ -7,10 +7,9 @@
   <%= f.label :start_time %>
   <% Time.use_zone("Australia/Sydney") do %>
   <%= f.datetime_select :start_time %>
-  <%= f.label :start_time %>
 
   <%#= f.datetime_select :start_time, :value => Time.current.strftime('%d/%m/%Y') %>
-  <% end %>
+
   <!-- <%#= f.time_select :start_time, :ignore_date => true%> -->
   <%#= f.time_select :start_time %>
   <br>
@@ -20,6 +19,7 @@
   <!-- <%#= f.time_select :end_time, :ignore_date => true %> -->
   <%#= f.time_select :end_time %>
   <br>
+  <% end %>
   <%= f.submit %>
 <% end %>
 

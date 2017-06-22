@@ -41,7 +41,7 @@ class TimeEntriesController < ApplicationController
 
     te = @current_user.time_entries.new(time_entry_params)
 
-    Time.zone = "Australia/Sydney"
+    # Time.zone = "Australia/Sydney"
     s = Time.zone.parse "#{params[:time_entry]["start_time(1i)"]}-#{params[:time_entry]["start_time(2i)"]}-#{params[:time_entry]["start_time(3i)"]} #{params[:time_entry]["start_time(4i)"]}:#{params[:time_entry]["start_time(5i)"]}"
 
     e = Time.zone.parse "#{params[:time_entry]["end_time(1i)"]}-#{params[:time_entry]["end_time(2i)"]}-#{params[:time_entry]["end_time(3i)"]} #{params[:time_entry]["end_time(4i)"]}:#{params[:time_entry]["end_time(5i)"]}"
