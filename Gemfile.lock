@@ -45,6 +45,10 @@ GEM
     aws_cf_signer (0.1.3)
     bcrypt (3.1.11)
     bindex (0.5.0)
+    browser-timezone-rails (1.0.1)
+      js_cookie_rails
+      jstz-rails3-plus
+      rails (>= 3.1)
     builder (3.2.3)
     byebug (9.0.6)
     cloudinary (1.8.1)
@@ -76,6 +80,10 @@ GEM
       rails-dom-testing (>= 1, < 3)
       railties (>= 4.2.0)
       thor (>= 0.14, < 2.0)
+    js_cookie_rails (2.1.4)
+      railties (>= 3.1)
+    jstz-rails3-plus (1.0.5)
+      railties (>= 3.1)
     listen (3.0.8)
       rb-fsevent (~> 0.9, >= 0.9.4)
       rb-inotify (~> 0.9, >= 0.9.7)
@@ -183,6 +191,7 @@ PLATFORMS
 DEPENDENCIES
   annotate
   bcrypt
+  browser-timezone-rails
   byebug
   cloudinary
   coffee-rails (~> 4.2)
