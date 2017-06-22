@@ -25,7 +25,5 @@ module Project1
 
     config.time_zone = 'Australia/Sydney'
     config.active_record.default_timezone = :utc
-
-
   end
 end
