@@ -1,24 +1,24 @@
-# README
+# Project Time Tracker - General Assembly Project 1
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+A time tracking app for your project.
 
-Things you may want to cover:
+Here is [my live site](https://project-time-tracker.herokuapp.com/)
 
-* Ruby version
+![fill murray](http://fillmurray.com/400/300)
 
-* System dependencies
+- Screenshot
+- Link to heroku
+- Packages used
+- Features /Known bugs /wishlist
+- Lessons learned/wins
 
-* Configuration
+-Add comments
+- Remove dead code and unused files
 
-* Database creation
 
-* Database initialization
 
-* How to run the test suite
+## Built with
+HTML5, CSS3, JavaScript, jQuery, Ruby on Rails, BootStrap framework
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+##Author
+Alice Tang
