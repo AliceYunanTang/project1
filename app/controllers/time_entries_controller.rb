@@ -1,15 +1,13 @@
 class TimeEntriesController < ApplicationController
   before_action :get_time_entry,  only: [:show, :edit, :update]
 
-  before_action :check_if_logged_in, only: [:edit, :update, :new, :destroy]
+  before_action :check_if_logged_in
 
   before_action :check_if_admin, only: [:index]
 
 
   def get_time_entry
     @time_entry = TimeEntry.find params["id"]
-
-    # @projects = Project.where
   end
 
   def index
@@ -40,7 +38,7 @@ class TimeEntriesController < ApplicationController
   def create
 
     te = @current_user.time_entries.new(time_entry_params)
-  
+
     # Time.zone = "Australia/Sydney"
     s = Time.zone.parse "#{params[:time_entry]["start_time(1i)"]}-#{params[:time_entry]["start_time(2i)"]}-#{params[:time_entry]["start_time(3i)"]} #{params[:time_entry]["start_time(4i)"]}:#{params[:time_entry]["start_time(5i)"]}"
 

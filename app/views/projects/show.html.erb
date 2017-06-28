@@ -1,29 +1,43 @@
-<h2>Project Details</h2>
+<div class="row">
+  <div class="col-md-6 col-md-offset-3 text-center">
+    <div class="project-show">
+      <h2>Project Details</h2>
+      <p>
+        <%= @project.name %>
+      </p>
 
-  <%= link_to 'Edit project', edit_project_path(@project) %>
+      <p>
+        <%= @project.description %>
+      </p>
 
+      <p>
+        <%= @project.location %>
+      </p>
 
-<p>
-  <%= @project.name %>
-</p>
+      <p>
+        <strong>Image:</strong>
+      </p>
+      <p>
+        <%= cl_image_tag @project.image %>
+      </p>
+      <div class="links btn-group">
+        <%= link_to "Back", projects_path , class: "btn btn-default" %>
+        <%= link_to 'Edit', edit_project_path(@project) , class: "btn btn-default"%>
+        <%= link_to 'Delete', project_path(@project), method: :delete, data: {confirm: "Are you sure?"} , class: "btn btn-default"%>
+      </div>
+      <h3>
+        Assigned Users
+      </h3>
 
-<p>
-  <%= @project.description %>
+        <% @users.each do |user| %>
+          <p>
 
-</p>
+              <%= link_to "#{ user.name } " %></td>
 
-<p>
-  <%= @project.location %>
+              <%=  user.email %></td>
+          </p>
+        <% end %>
 
-</p>
-
-<p>
-  <strong>Image:</strong>
-  <%= cl_image_tag @project.image %>
-</p>
-
-<p>
-  <% @users.each do |user| %>
-    <%= link_to "#{ user.name }" %>
-  <% end %>
-</p>
+    </div>
+  </div>
+</div>

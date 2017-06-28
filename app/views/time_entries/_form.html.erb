@@ -1,38 +1,45 @@
-<h3> Submit time form</h3>
+<div class="container">
+  <div class="row">
+    <div class="col-md-6 col-md-offset-3 text-center">
+      <h3>
+        Submit time form</h3>
 
-<%= form_for @time_entry do |f| %>
-  <%= f.label :project %>
-  <%= f.collection_select(:project_id, Project.all, :id, :name) %>
-  <br>
-  <%= f.label :start_time %>
-  <%# Time.use_zone("Australia/Sydney") do %>
-  <%= f.datetime_select :start_time %>
+      <%= form_for @time_entry do |f| %>
+      <%= f.label :project %>
+      <%= f.collection_select(:project_id, Project.all, :id, :name) %>
+      <br>
+      <%= f.label :start_time %>
+      <%# Time.use_zone("Australia/Sydney") do %>
+      <%= f.datetime_select :start_time %>
 
-  <%#= f.datetime_select :start_time, :value => Time.current.strftime('%d/%m/%Y') %>
+      <%#= f.datetime_select :start_time, :value => Time.current.strftime('%d/%m/%Y') %>
 
-  <!-- <%#= f.time_select :start_time, :ignore_date => true%> -->
-  <%#= f.time_select :start_time %>
-  <br>
-  <%= f.label :end_time %>
-  <%= f.datetime_select :end_time %>
-  <%#= f.date_select :end_time, :value => Time.zone.now %>
-  <!-- <%#= f.time_select :end_time, :ignore_date => true %> -->
-  <%#= f.time_select :end_time %>
-  <br>
-  <%# end %>
-  <%= f.submit %>
-<% end %>
+      <!-- <%#= f.time_select :start_time, :ignore_date => true%> -->
+      <%#= f.time_select :start_time %>
+      <br>
+      <%= f.label :end_time %>
+      <%= f.datetime_select :end_time %>
+      <%#= f.date_select :end_time, :value => Time.zone.now %>
+      <!-- <%#= f.time_select :end_time, :ignore_date => true %> -->
+      <%#= f.time_select :end_time %>
+      <br>
+      <%# end %>
+      <%= f.submit %>
+      <% end %>
 
-<h3>Time Entries</h3>
-<% @current_user.time_entries.each do |entry| %>
-  <div class="entry">
-    <%= entry.user.name %>
-    <%= entry.project.name %>
-    <%= entry.start_time %>
-    <%= entry.end_time %>
-    <%= entry.time %>
-    <%= entry.amount %>
-    <%= link_to 'Edit', edit_time_entry_path(entry.id) %>
-    <%= link_to 'Delete', time_entry_path(entry.id), method: :delete, data: {confirm: 'Are you sure?'} %>
+      <h3>Time Entries</h3>
+      <% @current_user.time_entries.each do |entry| %>
+      <div class="entry">
+        <%= entry.user.name %>
+        <%= entry.project.name %>
+        <%= entry.start_time %>
+        <%= entry.end_time %>
+        <%= entry.time %>
+        <%= entry.amount %>
+        <%= link_to 'Edit', edit_time_entry_path(entry.id) %>
+        <%= link_to 'Delete', time_entry_path(entry.id), method: :delete, data: {confirm: 'Are you sure?'} %>
+      </div>
+      <% end %>
+    </div>
   </div>
-<% end %>
+</div>

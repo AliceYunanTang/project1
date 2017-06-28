@@ -14,3 +14,8 @@
 //= require jquery_ujs
 
 //= require_tree .
+
+$(document).ready(function(){
+  $(":submit").addClass("btn btn-default")
+  $("input").addClass("form-control")
+});

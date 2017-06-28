@@ -3,7 +3,7 @@ class UsersController < ApplicationController
   before_action :get_user,        only: [:show, :edit, :update]
   before_action :check_if_admin,  only: [:index]
 
-  before_action :check_if_logged_in, only: []
+  before_action :check_if_logged_in, except: [:new, :create]
 
   def get_user
     @user = User.find params["id"]
@@ -11,6 +11,7 @@ class UsersController < ApplicationController
 
   def new
     @user = User.new
+
   end
 
   def create
@@ -22,12 +23,15 @@ class UsersController < ApplicationController
     if params[:file].present?
       req = Cloudinary::Uploader.upload params[:file]
       @user.image = req['public_id']
+    else
+      @user.image = "https://robohash.org/#{ user_params[:name]}"
     end
 
     @user.save
 
     if @user.id.present?
       session[:user_id] = @user.id # perform login (set session)
+
       redirect_to user_path(@user.id)
     else
       render :new
@@ -55,7 +59,7 @@ class UsersController < ApplicationController
   end
 
   def index
-    @users = User.all
+    @all_users = User.all
   end
 
   def show
@@ -64,6 +68,10 @@ class UsersController < ApplicationController
   end
 
   def destroy
+    session[:user_id] = nil
+    @user = @current_user.delete
+    flash[:delete]= "User deleted successfully"
+    redirect_to new_user_path
   end
 
   private

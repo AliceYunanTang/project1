@@ -1,16 +1,15 @@
-<h2>Projects Index</h2>
-<ul>
-<% @projects.each do |project| %>
+<div class="container">
+  <div class="row">
+    <div class="col-md-6 col-md-offset-3 text-center">
+      <h2>Projects Index</h2>
 
-  <li>
+      <% @projects.each do |project| %>
+          <div class="row">
+            <%= link_to  project.name, project_path(project.id) %>
+          </div>
+      <% end %>
 
-    <%= link_to project.name, project_path(project.id) %>
-  
-
-    <!-- <a href="/projects/<%= project.id %>"><%= project.name %></a>
-    <a data-method="delete" href="/projects/<%= project.id %>">Delete</a> -->
-
-  </li>
-
-<% end %>
-</ul>
+      <%= link_to "New Project", new_project_path, class:"btn btn-default" %>
+    </div>
+  </div>
+</div>
