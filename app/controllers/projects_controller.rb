@@ -18,7 +18,7 @@ class ProjectsController < ApplicationController
   def create
     @project = Project.create project_params
 
-    users = User.where(id: params[:user][:id] )
+    users = User.where(id: params[:add_user][:id] )
     @project.users << users
 
     redirect_to project_path(@project)

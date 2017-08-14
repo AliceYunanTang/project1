@@ -11,7 +11,6 @@ class TimeEntriesController < ApplicationController
   end
 
   def index
-      Time.zone = "Australia/Sydney"
     # @time_entries = TimeEntry.all
 
     # get all time entries, grouped by project:
@@ -20,17 +19,19 @@ class TimeEntriesController < ApplicationController
     # (use '.group_by(&:project_id)' to use use the ID as a key )
     # @entries = TimeEntry.where(user: @current_user).group_by(&:project)
 
-    check_if_admin
-    @entries = TimeEntry.all.group_by(&:project)
+    # check_if_admin
+    if @current_user.is_admin
+      @time_entries = TimeEntry.all
+    else
+      @time_entries = @current_user.time_entries
+    end
 
   end
 
   def show
-      Time.zone = "Australia/Sydney"
   end
 
   def new
-    Time.zone = "Australia/Sydney"
     @time_entry = TimeEntry.new
     @user = @current_user
   end
@@ -39,82 +40,29 @@ class TimeEntriesController < ApplicationController
 
     te = @current_user.time_entries.new(time_entry_params)
 
-    # Time.zone = "Australia/Sydney"
-    s = Time.zone.parse "#{params[:time_entry]["start_time(1i)"]}-#{params[:time_entry]["start_time(2i)"]}-#{params[:time_entry]["start_time(3i)"]} #{params[:time_entry]["start_time(4i)"]}:#{params[:time_entry]["start_time(5i)"]}"
-
-    e = Time.zone.parse "#{params[:time_entry]["end_time(1i)"]}-#{params[:time_entry]["end_time(2i)"]}-#{params[:time_entry]["end_time(3i)"]} #{params[:time_entry]["end_time(4i)"]}:#{params[:time_entry]["end_time(5i)"]}"
-
-    #
-    # s = Time.new(
-    #   params[:time_entry]["start_time(1i)"],
-    #   params[:time_entry]["start_time(2i)"],
-    #   params[:time_entry]["start_time(3i)"],
-    #   params[:time_entry]["start_time(4i)"],
-    #   params[:time_entry]["start_time(5i)"]
-    # )
-    #
-    # e = Time.new(
-    #   params[:time_entry]["end_time(1i)"],
-    #   params[:time_entry]["end_time(2i)"],
-    #   params[:time_entry]["end_time(3i)"],
-    #   params[:time_entry]["end_time(4i)"],
-    #   params[:time_entry]["end_time(5i)"]
-    # )
-
-    # raise 'hell'
+    s = params[:time_entry][:start_time].to_time
+    e = params[:time_entry][:end_time].to_time
 
     te.start_time = s
     te.end_time = e
 
-    puts "="*50
-    puts "start_time: ", s
-    puts "end_time: ", e
-
-    puts "te object:"
-    puts te.start_time.to_s
-    puts te.end_time.to_s
-
     if te.save
-
-      puts "AFTER SAVE==================================="
-      puts TimeEntry.last.start_time.to_s
-      puts TimeEntry.last.end_time.to_s
-
-
       redirect_to new_time_entry_path
     else
       render :new
     end
 
-    # te.calculate_time! unless te.nil?
-    # te.calculate_amount! unless te.nil?
-    # te.save
   end
 
   def edit
-      Time.zone = "Australia/Sydney"
+
   end
 
   def update
-      Time.zone = "Australia/Sydney"
 
     te = TimeEntry.find params[:id]
-
-    te.start_time = Time.new(
-      params[:time_entry]["start_time(1i)"],
-      params[:time_entry]["start_time(2i)"],
-      params[:time_entry]["start_time(3i)"],
-      params[:time_entry]["start_time(4i)"],
-      params[:time_entry]["start_time(5i)"]
-    )
-
-    te.end_time = Time.new(
-      params[:time_entry]["end_time(1i)"],
-      params[:time_entry]["end_time(2i)"],
-      params[:time_entry]["end_time(3i)"],
-      params[:time_entry]["end_time(4i)"],
-      params[:time_entry]["end_time(5i)"]
-    )
+    te.start_time = params[:time_entry][:start_time].to_time
+    te.end_time = params[:time_entry][:end_time].to_time
 
     if te.update(time_entry_params)
       redirect_to new_time_entry_path
@@ -131,6 +79,6 @@ class TimeEntriesController < ApplicationController
 
   private
   def time_entry_params
-    params.require(:time_entry).permit(:user_id, :project_id)
+    params.require(:time_entry).permit(:user_id, :project_id, :start_time, :end_time, :time, :amount)
   end
 end

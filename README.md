@@ -1,20 +1,11 @@
 # Project Time Tracker - General Assembly Project 1
 
-A time tracking app for your project.
+## Overview
+Project-time-tracker is a full stack web application where employees can keep track of time spent on each project.
 
-Here is [my live site](https://project-time-tracker.herokuapp.com/)
+Here is the live site [check it out ](https://project-time-tracker.herokuapp.com/)
 
-![fill murray](http://fillmurray.com/400/300)
-
-- Screenshot
-- Link to heroku
-- Packages used
-- Features /Known bugs /wishlist
-- Lessons learned/wins
-
--Add comments
-- Remove dead code and unused files
-
+![cover image](./app/assets/images/project-time-tracker.png)
 
 
 ## Built with

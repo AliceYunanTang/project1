@@ -1,26 +1,27 @@
 <div class="container">
-  <div class="row">
-    <div class="col-md-6 col-md-offset-3 text-center">
+  <!-- <div class="row">
+    <div class="col-md-6 col-md-offset-3 text-center"> -->
       <h2>Time Entries Index</h2>
-      <ul>
-        <% @entries.each do |project, entry| %>
+      <%= render partial: 'time_entry', collection: @time_entries %>
+      <!-- <ul>
+        <%# @entries.each do |project, entry| %>
         <li>
-          <strong><%= project.name %></strong>
+          <strong><%#= project.name %></strong>
 
           <ul>
-            <% entry.each do |e| %>
+            <%# entry.each do |e| %>
             <li>
-              <%= e.user.name %>
-              <%= e.start_time.strftime "%m:%M %p %a %b %Y"  %>
+              <%#= e.user.name %>
+              <%#= e.start_time.strftime "%m:%M %p %a %b %Y"  %>
               to
-              <%= e.end_time.strftime "%m:%M %p %a %b %Y" %></li>
-            <% end %>
+              <%#= e.end_time.strftime "%m:%M %p %a %b %Y" %></li>
+            <%# end %>
           </ul>
 
           <%#= link_to time_entry.user.name, time_entry_path(time_entry.id) %>
         </li>
-        <% end %>
-      </ul>
-    </div>
-  </div>
+        <%# end %>
+      </ul> -->
+    <!-- </div>
+  </div> -->
 </div>
